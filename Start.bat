@@ -177,17 +177,28 @@
 	
 	:puzzletest
 	set key=0
+	set pweb=0
+	goto p1
+	
+	
+	:p1
 	cls
 	title puzzle test
 	echo You are in a room with a locked door. A key lies on the floor
 	echo.
 	echo what do you want to do?
-	echo 1) interact with door
-	echo 2) interact with key
-	set /p web=
-	if "%web%"=="1" if "%key%"=="0" echo the door won't budge
-	if "%web%"=="1" if "%key%"=="1" echo you unlocked the door!
-	if "%web%"=="2" set key=1
-	if "%web%"=="2" echo You picked up the key!
+	echo 1) interact with the door
+	echo 2) interact with the key
+	set /p pweb=
 	
+	if "%pweb%"=="1" if "%key%"=="0" echo the door won't budge
+	if "%pweb%"=="2" echo You picked up the key!
+	if "%pweb%"=="2" set key=1
+	if "%pweb%"=="1" if "%key%"=="1" goto p2
+	
+	
+	:p
+	title hall
+	echo the door swings open and you now find yourself in a hall
+	pause
 	
